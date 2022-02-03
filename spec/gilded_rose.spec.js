@@ -87,7 +87,7 @@ describe("Gilded Rose", function () {
   });
 
    //TEST 9
-   fit("backstage pass quality drops to 0 once its past sell in", function () {
+   it("backstage pass quality drops to 0 once its past sell in", function () {
     const gildedRose = new Shop([new Item(BACKSTAGE_PASS, 1, 40)]);
     const backstagePass = gildedRose.updateQuality();
 

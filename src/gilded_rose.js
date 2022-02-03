@@ -19,7 +19,7 @@ class Shop {
   }
   updateQuality() {
     for (const items of this.items) {
-       // reduces sell in for all items that isnt SULFURAS
+       // reduces sell-in for all items that isnt SULFURAS(legendary item)
       this.reduceSellIn()
       if (this.isntUniqueItems() && items.quality > 0) {
         items.quality--
@@ -31,20 +31,18 @@ class Shop {
       }
 
      
-      
+      //negative sell in
       if (items.sellIn < 0) {
+        //not aged-brie and sell in negative days
         if (items.name != AGED_BRIE) {
-          if (items.quality > 0) {
-            if (items.name != SULFURAS) {
-              items.quality--
-            }
+          //not aged brie, negative sell in and quality more that 0
+          if (items.quality > 0 && items.name != SULFURAS) 
+             //not aged brie & SULFURAS , negative sell in ,and quality more that 0
+             { items.quality-- }
           }
-
-        }
         else if (items.quality < MAX_QUALIITY) {
           items.quality++
         }
-
       }
 
 
