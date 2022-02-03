@@ -21,9 +21,10 @@ describe("Gilded Rose", function () {
     expect(expected).toEqual(3);
   });
 
-  //TEST 3
+  //TEST 3 - Since quality drops by 2 once past sell in,
+  //the quality of this test stays at 0 even though its past sell in.
   it("quality never goes down to a negative number", function () {
-    const gildedRose = new Shop([new Item("foo", 5, 0)]);
+    const gildedRose = new Shop([new Item("foo", -5, 1)]);
     const negativeQuality = gildedRose.updateQuality();
 
     const expected = negativeQuality[0].quality
@@ -69,7 +70,7 @@ describe("Gilded Rose", function () {
 
   //TEST 8
   it("backstage pass quality increases by 2 when 10 or less sell in left", function () {
-    const gildedRose = new Shop([new Item(BACKSTAGE_PASS, 9, 40)]);
+    const gildedRose = new Shop([new Item(BACKSTAGE_PASS, 10, 40)]);
     const backstagePass = gildedRose.updateQuality();
 
     const expected = backstagePass[0].quality
@@ -86,14 +87,23 @@ describe("Gilded Rose", function () {
   });
 
    //TEST 9
-   it("backstage pass quality drops to 0 once its past sell in", function () {
-    const gildedRose = new Shop([new Item(BACKSTAGE_PASS, 0, 40)]);
+   fit("backstage pass quality drops to 0 once its past sell in", function () {
+    const gildedRose = new Shop([new Item(BACKSTAGE_PASS, 1, 40)]);
     const backstagePass = gildedRose.updateQuality();
 
     const expected = backstagePass[0].quality
     expect(expected).toEqual(0);
   });
 
+   //TEST 10
+   it("sell in goes down for everything but Sulfuras", function () {
+    const gildedRose = new Shop([new Item('foo', 0, 40)])
+     new Shop([new Item(SULFURAS, 0, 80)]);
+    const sellIn = gildedRose.updateQuality();
+
+    const expected = sellIn[0].sellIn
+    expect(expected).toEqual(-1);
+  });
 
 
 
