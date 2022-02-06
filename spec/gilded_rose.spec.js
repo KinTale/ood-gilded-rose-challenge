@@ -58,8 +58,8 @@ describe("Gilded Rose", function () {
     const expected = legendarySellIn[0].sellIn
     expect(expected).toEqual(0);
   });
-   
-//TEST 7
+
+  //TEST 7
   it("legendary item quality does not drop", function () {
     const gildedRose = new Shop([new Item(SULFURAS, 0, 80)]);
     const legendaryQuality = gildedRose.updateQuality();
@@ -86,19 +86,19 @@ describe("Gilded Rose", function () {
     expect(expected).toEqual(43);
   });
 
-   //TEST 9
-   it("backstage pass quality drops to 0 once its past sell in", function () {
-    const gildedRose = new Shop([new Item(BACKSTAGE_PASS, 1, 40)]);
+  //TEST 9
+  it("backstage pass quality drops to 0 once its past sell in", function () {
+    const gildedRose = new Shop([new Item(BACKSTAGE_PASS, 0, 50)]);
     const backstagePass = gildedRose.updateQuality();
 
     const expected = backstagePass[0].quality
     expect(expected).toEqual(0);
   });
 
-   //TEST 10
-   it("sell in goes down for everything but Sulfuras", function () {
+  //TEST 10
+  it("sell in goes down for everything but Sulfuras", function () {
     const gildedRose = new Shop([new Item('foo', 0, 40)])
-     new Shop([new Item(SULFURAS, 0, 80)]);
+    new Shop([new Item(SULFURAS, 0, 80)]);
     const sellIn = gildedRose.updateQuality();
 
     const expected = sellIn[0].sellIn
@@ -108,13 +108,22 @@ describe("Gilded Rose", function () {
   //TEST 11
   it("conjured mana cake quality drop by 2 always", function () {
     const gildedRose = new Shop([new Item('Conjured Mana Cake', 10, 40)])
-    
+
     const manaCake = gildedRose.updateQuality();
 
     const expected = manaCake[0].quality
     expect(expected).toEqual(38);
   });
 
+  //TEST 12
+  it("conjured mana cake quality drop by 4 if sell in date is negative", function () {
+    const gildedRose = new Shop([new Item('Conjured Mana Cake', 0, 40)])
+
+    const manaCake = gildedRose.updateQuality();
+
+    const expected = manaCake[0].quality
+    expect(expected).toEqual(36);
+  });
 
 
 });

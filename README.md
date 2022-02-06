@@ -17,12 +17,12 @@ You could write some unit tests yourself, using the requirements to identify sui
 **IMPORTANT:** Whichever testing approach you choose, the idea of the exercise is to do some **deliberate practice**, and improve your skills at designing test cases and refactoring. The idea is not to re-write the code from scratch, but rather to practice designing tests, taking small steps, running the tests often, and incrementally improving the design.
 
 #### Standard
-- [x] Meets the spec
-- [x] Developed test-first - tests written to cover existing functionality.
-- [x] Passes tests and code is linted
-- [ ] Methods are extracted one by one from the nested `if` statement per item type
-- [ ] Classes that encapsulate item update procedures are extracted per item type
-- [ ] Shop#updateQuality() has no `if() {}` statements
+- [] Meets the spec
+- [] Developed test-first - tests written to cover existing functionality.
+- [] Passes tests and code is linted
+- [] Methods are extracted one by one from the nested `if` statement per item type
+- [] Classes that encapsulate item update procedures are extracted per item type
+- [] Shop#updateQuality() has no `if() {}` statements
 
 #### Extended
 - [ ] See a teacher!
