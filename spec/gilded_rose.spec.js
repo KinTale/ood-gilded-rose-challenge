@@ -105,6 +105,16 @@ describe("Gilded Rose", function () {
     expect(expected).toEqual(-1);
   });
 
+  //TEST 11
+  it("conjured mana cake quality drop by 2 always", function () {
+    const gildedRose = new Shop([new Item('Conjured Mana Cake', 10, 40)])
+    
+    const manaCake = gildedRose.updateQuality();
+
+    const expected = manaCake[0].quality
+    expect(expected).toEqual(38);
+  });
+
 
 
 });
